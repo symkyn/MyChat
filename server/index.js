@@ -5,10 +5,13 @@ require('dotenv').config({
 });
 
 const globalDecorator = require('./middleware/global-decorator.middleware');
+const routerHub = require('./router/hub.router');
 
 const app = express();
 
 globalDecorator(app);
+routerHub(app);
+
 
 app.use((err, req, res, next) => {
     res.status(500).send(err);
